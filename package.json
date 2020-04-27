@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "mdbvue": "^6.7.1",
     "vue": "^2.6.11",
+    "vue-form-generator": "^2.3.4",
     "vuelidate": "^0.7.5"
   },
   "devDependencies": {

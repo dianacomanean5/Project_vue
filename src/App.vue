@@ -1,56 +1,25 @@
 <template>
     <div id="app">
-        <CrudForm v-bind:users="users"/>
+        <CrudForm />
+
     </div>
 </template>
 
 <script>
-    import Vue from 'vue'
-    import Vuelidate from 'vuelidate'
-    import CrudForm from './components/CrudForm.vue'
 
-    Vue.use(Vuelidate);
-    import {required, minLength, maxLength} from 'vuelidate/lib/validators'
+    import CrudForm from './components/CrudForm.vue';
+
 
     export default {
-      name: 'App',
-      components: {
-        CrudForm
-      },
-      data() {
-        return {
-          users: [{
-            id: 0,
-            name: 'Maria',
-            age: '30',
-            city: 'Sibiu',
-            email: 'isabela@yahoo.com',
-            number: '0740051205'
-          }]
-        }
-      },
-      validations: {
-        name: {
-          required: true,
-          type: String
-        },
-        age: {
-          required: true,
-          minLength: minLength(1),
-        },
-        city: {
-          required,
+        name: 'App',
+        components: {
+            CrudForm,
 
         },
-        email: {
-          required,
-          message: "Email must be name@example.com"
-        },
-        number: {
-          required,
-          maxLength: maxLength(20)
+        data() {
+            return {
+            }
         }
-      },
     }
 </script>
 
