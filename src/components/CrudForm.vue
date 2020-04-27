@@ -4,9 +4,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Form</div>
                 <div class="panel-body">
-                    <vue-form-generator :schema="schema" :users="users" :options="formOptions"></vue-form-generator>
+                    <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
                     <br>
-                    <input  type="button" onClick="save();" value="Save">
+                    <v-btn color="primary" fab small dark onClick="save();">Save</v-btn>
                 </div>
             </div>
         </div>
@@ -17,82 +17,91 @@
     import Vue from 'vue';
     import VueFormGenerator from 'vue-form-generator';
     import 'vue-form-generator/dist/vfg.css';
+    import Vuetify from 'vuetify'
+    import 'vuetify/dist/vuetify.min.css'
     Vue.use(VueFormGenerator);
+    Vue.use(Vuetify);
 
-    export default {
-        name: 'Model',
+    export default  {
+        name: 'CrudForm',
         props: [],
         components: {
             "vue-form-generator": VueFormGenerator.component,
         },
         data() {
             return {
-                users: {
+                model: {
                     id: 1,
                     name: 'Maria',
-                    age: '30',
-                    city: ['Sibiu', 'Cluj', 'Bucuresti'],
-                    email: 'isabela@yahoo.com',
+                    age: '18',
+                    skills: ["HTML5", "Javascript", "CSS3","VueJS"],
+                    email: 'maria@yahoo.com',
                     status: true
                 },
                 schema: {
                     fields: [
                         {
-                            type: 'input',
-                            inputType: 'text',
-                            label: 'ID',
-                            users: 'id',
-                            autoIncrement: true,
-                            primaryKey: true
+                            type: "input",
+                            inputType: "text",
+                            label: "ID",
+                            model: "id",
+                            readonly: true,
+                            featured: false,
+                            disabled: true
                         },
                         {
                             type: 'input',
                             inputType: 'text',
                             label: 'Name',
-                            users: 'name',
+                            model: 'name',
                             placeholder: 'Your name',
                             featured: true,
                             required: true,
                             validator: VueFormGenerator.validators.string
                         },
                         {
-                            type: 'input',
-                            inputType: 'text',
-                            label: 'Age',
-                            users: 'age',
+                            type: "input",
+                            inputType: "number",
+                            label: "Age",
+                            model: "age",
                             min: 18,
-                            placeholder: 'Your age',
-                            required: true,
-                            validator: VueFormGenerator.validators.number
+                            // validator: VueFormGenerator.validators.number
                         },
                         {
-                            type: 'select',
-                            label: 'City',
-                            users: 'city',
-                            values: ['Sibiu', 'Bucuresti', 'Cluj', 'Brasov']
+                            type: "checklist",
+                            label: "Skills",
+                            model: "skills",
+                            multi: true,
+                            required: true,
+                            multiSelect: true,
+                            values: ["HTML5", "Javascript", "CSS3", "CoffeeScript", "AngularJS", "ReactJS", "VueJS"]
                         },
                         {
                             type: 'input',
                             inputType: 'email',
                             label: 'E-mail',
-                            users: 'email',
+                            model: 'email',
                             required: true,
                             placeholder: 'User\'s e-mail address',
                             validator: VueFormGenerator.validators.email
                         },
                         {
-                            type: 'checkbox',
-                            label: 'Status',
-                            users: 'status',
-                            default: true
+                            type: "switch",
+                            label: "Status",
+                            model: "status",
+                            multi: true,
+                            readonly: false,
+                            featured: false,
+                            disabled: false,
+                            default: true,
+                            textOn: "Active",
+                            textOff: "Inactive"
                         }
                     ]
                 },
                 formOptions: {
                     validateAfterLoad: true,
                     validateAfterChanged:
-                        true,
-                    validateAsync:
                         true
                 }
 
@@ -119,6 +128,39 @@
     a {
         color: #42b983;
     }
+    html {
+        font-family: Tahoma,serif;
+        font-size: 14px;
+    }
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+    }
+
+    pre {
+        overflow: auto;
+    }
+    pre .string { color: #885800; }
+    pre .number { color: blue; }
+    pre .boolean { color: magenta; }
+    pre .null { color: red; }
+    pre .key { color: green; }
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    fieldset {
+        border: 0;
+    }
+
     .panel {
         margin-bottom: 20px;
         background-color: #fff;
@@ -141,6 +183,10 @@
 
     .panel-body {
         padding: 15px;
+    }
+
+    .field-checklist .wrapper {
+        width: 100%;
     }
 
 </style>
