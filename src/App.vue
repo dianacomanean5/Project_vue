@@ -1,29 +1,25 @@
 <template>
     <div id="app">
+        <CrudForm />
 
-        <GridCrud :data="gridData" :columns="gridColumns"></GridCrud>
-        <CrudForm/>
     </div>
 </template>
 
 <script>
 
     import CrudForm from './components/CrudForm.vue';
-    import GridCrud from "./components/GridCrud";
+
 
     export default {
         name: 'App',
         components: {
             CrudForm,
-            GridCrud
 
         },
         data() {
             return {
-
             }
         }
-
     }
 </script>
 

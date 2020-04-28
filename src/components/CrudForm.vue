@@ -14,6 +14,7 @@
 </template>
 
 <script>
+
     import Vue from 'vue';
     import VueFormGenerator from 'vue-form-generator';
     import 'vue-form-generator/dist/vfg.css';
@@ -22,92 +23,34 @@
     Vue.use(VueFormGenerator);
     Vue.use(Vuetify);
 
-    export default  {
+
+    export default {
         name: 'CrudForm',
-        props: [],
+        props: ['schema','model','formOptions'],
         components: {
             "vue-form-generator": VueFormGenerator.component,
         },
         data() {
             return {
-                model: {
-                    id: 1,
-                    name: 'Maria',
-                    age: '18',
-                    skills: ["HTML5", "Javascript", "CSS3","VueJS"],
-                    email: 'maria@yahoo.com',
-                    status: true
-                },
-                schema: {
-                    fields: [
-                        {
-                            type: "input",
-                            inputType: "text",
-                            label: "ID",
-                            model: "id",
-                            readonly: true,
-                            featured: false,
-                            disabled: true
-                        },
-                        {
-                            type: 'input',
-                            inputType: 'text',
-                            label: 'Name',
-                            model: 'name',
-                            placeholder: 'Your name',
-                            featured: true,
-                            required: true,
-                            validator: VueFormGenerator.validators.string
-                        },
-                        {
-                            type: "input",
-                            inputType: "number",
-                            label: "Age",
-                            model: "age",
-                            min: 18,
-                            // validator: VueFormGenerator.validators.number
-                        },
-                        {
-                            type: "checklist",
-                            label: "Skills",
-                            model: "skills",
-                            multi: true,
-                            required: true,
-                            multiSelect: true,
-                            values: ["HTML5", "Javascript", "CSS3", "CoffeeScript", "AngularJS", "ReactJS", "VueJS"]
-                        },
-                        {
-                            type: 'input',
-                            inputType: 'email',
-                            label: 'E-mail',
-                            model: 'email',
-                            required: true,
-                            placeholder: 'User\'s e-mail address',
-                            validator: VueFormGenerator.validators.email
-                        },
-                        {
-                            type: "switch",
-                            label: "Status",
-                            model: "status",
-                            multi: true,
-                            readonly: false,
-                            featured: false,
-                            disabled: false,
-                            default: true,
-                            textOn: "Active",
-                            textOff: "Inactive"
-                        }
-                    ]
-                },
-                formOptions: {
-                    validateAfterLoad: true,
-                    validateAfterChanged:
-                        true
-                }
 
             }
 
-        }
+        },
+        methods:
+            {
+                save() {
+                    for (let i = 0; i < this.model.length; i++) {
+                        this.model.forEach(name=>
+                            sessionStorage.setItem(name, JSON.stringify(this[name])));
+                        // let age = sessionStorage.getItem('age');
+                        // let skills = sessionStorage.getItem('skills');
+                        // let email = sessionStorage.getItem('email');
+                        // let status = sessionStorage.getItem('status');
+                    }
+
+                  //  console.log(data);
+                }
+            }
     }
 </script>
 <style scoped>
@@ -128,8 +71,9 @@
     a {
         color: #42b983;
     }
+
     html {
-        font-family: Tahoma,serif;
+        font-family: Tahoma, serif;
         font-size: 14px;
     }
 
@@ -143,11 +87,26 @@
     pre {
         overflow: auto;
     }
-    pre .string { color: #885800; }
-    pre .number { color: blue; }
-    pre .boolean { color: magenta; }
-    pre .null { color: red; }
-    pre .key { color: green; }
+
+    pre .string {
+        color: #885800;
+    }
+
+    pre .number {
+        color: blue;
+    }
+
+    pre .boolean {
+        color: magenta;
+    }
+
+    pre .null {
+        color: red;
+    }
+
+    pre .key {
+        color: green;
+    }
 
     h1 {
         text-align: center;
