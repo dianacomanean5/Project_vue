@@ -1,15 +1,15 @@
 <template>
     <div id="app">
-        <CrudForm />
-        <GridCrud v-bind:users=users></GridCrud>
 
+        <GridCrud :data="gridData" :columns="gridColumns"></GridCrud>
+        <CrudForm/>
     </div>
 </template>
 
 <script>
 
     import CrudForm from './components/CrudForm.vue';
-import GridCrud from "./components/GridCrud";
+    import GridCrud from "./components/GridCrud";
 
     export default {
         name: 'App',
@@ -20,8 +20,10 @@ import GridCrud from "./components/GridCrud";
         },
         data() {
             return {
+
             }
         }
+
     }
 </script>
 
