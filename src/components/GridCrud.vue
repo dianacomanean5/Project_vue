@@ -2,8 +2,6 @@
     <div id="demo">
         <table border='1' width='80%' style='border-collapse: collapse;' class="center">
             <thead>
-
-
             <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -11,25 +9,19 @@
                 <th>Skills</th>
                 <th>Email</th>
                 <th>Status</th>
-
             </tr>
-
             </thead>
             <tbody>
-
-            <tr v-for="(model,key) in this.model" v-bind:key="key" >
-                <td>{{ model.id }}</td>
-                <td>{{ model.name }}</td>
-                <td>{{ model.age }}</td>
-                <td>{{ model.skills }}</td>
-                <td>{{ model.email}}</td>
-                <td>{{ model.status}}</td>
-
+            <tr v-for="(grid1,key) in this.users" v-bind:key="key">
+                <td>{{ grid1.id }}</td>
+                <td>{{ grid1.name }}</td>
+                <td>{{ grid1.age }}</td>
+                <td>{{ grid1.skills }}</td>
+                <td>{{ grid1.email}}</td>
+                <td>{{ grid1.status}}</td>
             </tr>
-
             </tbody>
         </table>
-
     </div>
 </template>
 <script>
@@ -38,8 +30,7 @@
         // template: "#grid-template",
 
         props:
-            ['model']
-
+            ['users']
 
     }
 </script>
@@ -67,15 +58,18 @@
         padding: 8px;
         border-right: 2px solid #7D82A8;
     }
+
     table td:last-child {
         border-right: none;
     }
+
     table tbody tr:nth-child(2n) td {
         background: #D4D8F9;
 
     }
+
     table.center {
-        margin-left:auto;
-        margin-right:auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>
