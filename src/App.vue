@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <GridCrud
-               :users="gridData"></GridCrud>
+                :users="gridData"></GridCrud>
         <CrudForm :schema="schema" :model="model" :options="formOptions"/>
 
     </div>
@@ -10,13 +10,14 @@
 
 <script>
 
-     import CrudForm from './components/CrudForm.vue';
+    import CrudForm from './components/CrudForm.vue';
     import GridCrud from "./components/GridCrud";
     import Vue from 'vue';
     import VueFormGenerator from 'vue-form-generator';
     import 'vue-form-generator/dist/vfg.css';
     import Vuetify from 'vuetify'
     import 'vuetify/dist/vuetify.min.css'
+    // import ModelClass from './ModelClass.js'
 
     Vue.use(VueFormGenerator);
     Vue.use(Vuetify);
@@ -26,12 +27,12 @@
         name: 'App',
         components: {
             GridCrud,
-           CrudForm,
+            CrudForm,
 
         },
         data() {
             return {
-                model:{
+                model: {
                     id: 1,
                     name: 'Maria',
                     age: '18',
@@ -105,8 +106,6 @@
                     validateAfterChanged:
                         true
                 },
-
-
                 gridColumns: ["id", "name", "age", "skills", "email", "status"],
                 gridData: [
                     {id: 0, name: "Chuck ", age: 12, skills: "html", email: "aana@mail.ro", status: "true"},

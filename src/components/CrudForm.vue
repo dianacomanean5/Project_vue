@@ -6,7 +6,7 @@
                 <div class="panel-body">
                     <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
                     <br>
-                    <v-btn color="primary" fab small dark onClick="save();">Save</v-btn>
+                    <v-btn color="primary" fab small dark v-on:click="save" >Save</v-btn>
                 </div>
             </div>
         </div>
@@ -20,19 +20,20 @@
     import 'vue-form-generator/dist/vfg.css';
     import Vuetify from 'vuetify'
     import 'vuetify/dist/vuetify.min.css'
+
     Vue.use(VueFormGenerator);
     Vue.use(Vuetify);
 
 
     export default {
         name: 'CrudForm',
-        props: ['schema','model','formOptions'],
+        props: ['schema', 'model', 'formOptions'],
         components: {
             "vue-form-generator": VueFormGenerator.component,
         },
         data() {
             return {
-
+                users: this.model
             }
 
         },
@@ -40,15 +41,14 @@
             {
                 save() {
                     for (let i = 0; i < this.model.length; i++) {
-                        this.model.forEach(name=>
-                            sessionStorage.setItem(name, JSON.stringify(this[name])));
-                        // let age = sessionStorage.getItem('age');
-                        // let skills = sessionStorage.getItem('skills');
-                        // let email = sessionStorage.getItem('email');
-                        // let status = sessionStorage.getItem('status');
+                        sessionStorage.setItem('id',this.users.id);
+                        sessionStorage.setItem('name',this.users.name);
+                        sessionStorage.setItem('age',this.users.age);
+                        sessionStorage.setItem('skills',this.users.skills);
+                        sessionStorage.setItem('email',this.users.email);
+                        sessionStorage.setItem('status',this.users.status);
                     }
 
-                  //  console.log(data);
                 }
             }
     }

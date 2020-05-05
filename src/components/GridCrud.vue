@@ -12,7 +12,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(grid1,key) in this.users" v-bind:key="key">
+            <tr v-for="(grid1, key) in this.users" v-bind:key="key">
                 <td>{{ grid1.id }}</td>
                 <td>{{ grid1.name }}</td>
                 <td>{{ grid1.age }}</td>
