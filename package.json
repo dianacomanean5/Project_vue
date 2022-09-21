@@ -14,7 +14,7 @@
     "vue-form-generator": "^2.3.4",
     "vue-mc": "^0.6.0",
     "vuelidate": "^0.7.5",
-    "vuetify": "^2.2.25"
+    "vuetify": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
